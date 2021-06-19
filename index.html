@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <link rel="stylesheet" href="./styles/style.css"> 
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./styles/style.css">
 </head>
+
 <body>
 
   <div class="container">
-    
-    <header class="header">
-      <div class="title">Calc</div>
-      <div class="theme-toggle"></div>
+
+    <header>
+      <div class="title">calc</div>
+      <div class="theme-toggle">
+        <label for="theme">THEME</label>
+        <div class="theme-bg">
+          <input type="radio" name="theme-buttons" id="theme switcher-1">
+          <input type="radio" name="theme-buttons" id="theme switcher-2">
+          <input type="radio" name="theme-buttons" id="theme switcher-3">
+        </div>
+      </div>
     </header>
-    
+
     <div class="input-field">
-      <div class="previous-input"></div>
-      <div class="current-input"></div>
+      <input type="text" value="399,981" id="input-field">
     </div>
-    
+
     <div class="keys">
       <div class="key 7">7</div>
       <div class="key 8">8</div>
@@ -49,14 +49,12 @@
       <div class="key reset">RESET</div>
       <div class="key equal-to">=</div>
     </div>
-  
+
   </div>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Surya Vivek</a>.
-  </div>
+
+
   <script src="app.js"></script>
 </body>
+
 </html>
