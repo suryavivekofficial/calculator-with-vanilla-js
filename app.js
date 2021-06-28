@@ -39,12 +39,15 @@ class Calculator {
   operate() {
     // Operations of the numbers goes here...
   }
-  reset(input) {
-    input.innerText = ``;
+  reset() {
+    this.input.innerText = ``;
   }
 
   delete() {
-    // input.innerText -=  input.innerText.length
+    this.input.innerText = this.input.innerText.slice(
+      0,
+      this.input.innerText.length - 1
+    );
   }
 }
 
@@ -75,11 +78,11 @@ operations.forEach((operation) => {
 });
 
 //Reset Button
-resetBtn.addEventListener("click", () => calculator.reset(input));
+resetBtn.addEventListener("click", () => calculator.reset());
 
 //Delete Button
 deleteBtn.addEventListener("click", () => {
-  console.log(input.innerText.length);
+  calculator.delete();
 });
 
 const calculator = new Calculator(input);
