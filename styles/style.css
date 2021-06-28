@@ -74,7 +74,8 @@ body .container header .theme-toggle .theme-bg {
 }
 
 body .container .input-field {
-  height: 20vh;
+  min-height: 20vh;
+  overflow-y: scroll;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
