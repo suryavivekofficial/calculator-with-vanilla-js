@@ -1,6 +1,7 @@
 class Calculator {
-  constructor(input) {
+  constructor(input, operations) {
     this.input = input;
+    this.operations = operations;
   }
 
   appendNumber(input, number) {
@@ -11,27 +12,27 @@ class Calculator {
     }
   }
 
-  appendOperation(operator, operations) {
+  appendOperation(operator) {
     this.input.innerText += operator;
-    this.checkOperation(operations);
+    this.checkOperation();
   }
 
-  checkOperation(operations) {
+  checkOperation() {
     let flag = 0;
     for (let i = 0; i < input.innerText.length; i++) {
-      for (let j = 0; j < operations.length; j++) {
-        if (input.innerText[i] === operations[j]) {
+      for (let j = 0; j < this.operations.length; j++) {
+        if (input.innerText[i] === this.operations[j]) {
           flag += 1;
           break;
         }
       }
     }
     if (flag >= 2) {
-      this.slicing(operations);
+      this.slicing();
     }
   }
 
-  slicing(operations) {
+  slicing() {
     const toBeCalculated = this.input.innerText.slice(
       0,
       this.input.innerText.length - 1
@@ -39,16 +40,13 @@ class Calculator {
     this.operate(toBeCalculated, operations);
   }
 
-  operate(toBeCalculated, operations) {
+  operate(toBeCalculated) {
     // Operations of the numbers goes here...
-    let { num1, operator, num2 } = this.returnNumbers(
-      toBeCalculated,
-      operations
-    );
+    let { num1, operator, num2 } = this.returnNumbers(toBeCalculated);
     num1 = parseInt(num1);
     num2 = parseInt(num2);
+
     let result = null;
-    console.log(operator);
     switch (operator) {
       case "+":
         result = num1 + num2;
@@ -65,13 +63,18 @@ class Calculator {
       default:
         alert("something went wrong!");
     }
-    console.log(result);
+    if (isNaN(num1) || isNaN(num2)) {
+      alert("Error");
+      this.reset();
+    } else {
+      this.updateDisplay(result);
+    }
   }
 
-  returnNumbers(inputNumbers, operations) {
+  returnNumbers(inputNumbers) {
     for (let i = 0; i < inputNumbers.length; i++) {
-      for (let j = 0; j < operations.length; j++) {
-        if (inputNumbers[i] == operations[j]) {
+      for (let j = 0; j < this.operations.length; j++) {
+        if (inputNumbers[i] == this.operations[j]) {
           const num1 = inputNumbers.slice(0, i);
           const operator = inputNumbers[i];
           const num2 = inputNumbers.slice(i + 1, inputNumbers.length);
@@ -82,6 +85,21 @@ class Calculator {
           };
         }
       }
+    }
+  }
+
+  updateDisplay(result) {
+    //this.input.innerText = result;
+    if (
+      this.operations.includes(
+        this.input.innerText[this.input.innerText.length - 1]
+      )
+    ) {
+      this.input.innerText = `${result}${
+        this.input.innerText[this.input.innerText.length - 1]
+      } `;
+    } else {
+      this.input.innerText = result;
     }
   }
 
@@ -119,7 +137,7 @@ numbers.forEach((number) => {
 //Appending operators
 operations.forEach((operation) => {
   operation.addEventListener("click", () => {
-    calculator.appendOperation(operation.innerText, operatorArray);
+    calculator.appendOperation(operation.innerText);
   });
 });
 
@@ -130,8 +148,6 @@ resetBtn.addEventListener("click", () => calculator.reset());
 deleteBtn.addEventListener("click", () => calculator.delete());
 
 //Equals to Button
-equalsBtn.addEventListener("click", () =>
-  calculator.operate(input.innerText, operatorArray)
-);
+equalsBtn.addEventListener("click", () => calculator.operate(input.innerText));
 
-const calculator = new Calculator(input);
+const calculator = new Calculator(input, operatorArray);
