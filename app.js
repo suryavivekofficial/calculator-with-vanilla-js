@@ -13,32 +13,78 @@ class Calculator {
 
   appendOperation(operator, operations) {
     this.input.innerText += operator;
-    console.log(input.innerText);
-    this.checkOperation(operator, operations);
+    this.checkOperation(operations);
   }
 
-  checkOperation(operator, operations) {
+  checkOperation(operations) {
     let flag = 0;
     for (let i = 0; i < input.innerText.length; i++) {
       for (let j = 0; j < operations.length; j++) {
         if (input.innerText[i] === operations[j]) {
           flag += 1;
-
           break;
         }
       }
     }
-    if (flag === 2) {
-      // operate();
-      console.log(`operating the numbers ${operator} and ${flag}`);
-    } else {
-      console.log(`Appending operator ${operator} and ${flag}`);
+    if (flag >= 2) {
+      this.slicing(operations);
     }
   }
 
-  operate() {
-    // Operations of the numbers goes here...
+  slicing(operations) {
+    const toBeCalculated = this.input.innerText.slice(
+      0,
+      this.input.innerText.length - 1
+    );
+    this.operate(toBeCalculated, operations);
   }
+
+  operate(toBeCalculated, operations) {
+    // Operations of the numbers goes here...
+    let { num1, operator, num2 } = this.returnNumbers(
+      toBeCalculated,
+      operations
+    );
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    let result = null;
+    console.log(operator);
+    switch (operator) {
+      case "+":
+        result = num1 + num2;
+        break;
+      case "-":
+        result = num1 - num2;
+        break;
+      case "×":
+        result = num1 * num2;
+        break;
+      case "/":
+        result = num1 / num2;
+        break;
+      default:
+        alert("something went wrong!");
+    }
+    console.log(result);
+  }
+
+  returnNumbers(inputNumbers, operations) {
+    for (let i = 0; i < inputNumbers.length; i++) {
+      for (let j = 0; j < operations.length; j++) {
+        if (inputNumbers[i] == operations[j]) {
+          const num1 = inputNumbers.slice(0, i);
+          const operator = inputNumbers[i];
+          const num2 = inputNumbers.slice(i + 1, inputNumbers.length);
+          return {
+            num1,
+            operator,
+            num2,
+          };
+        }
+      }
+    }
+  }
+
   reset() {
     this.input.innerText = ``;
   }
@@ -81,8 +127,11 @@ operations.forEach((operation) => {
 resetBtn.addEventListener("click", () => calculator.reset());
 
 //Delete Button
-deleteBtn.addEventListener("click", () => {
-  calculator.delete();
-});
+deleteBtn.addEventListener("click", () => calculator.delete());
+
+//Equals to Button
+equalsBtn.addEventListener("click", () =>
+  calculator.operate(input.innerText, operatorArray)
+);
 
 const calculator = new Calculator(input);
