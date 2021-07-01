@@ -6,7 +6,7 @@ class Calculator {
 
   appendNumber(input, number) {
     if (number === "." && input.innerText.includes(".")) {
-      return;
+      this.checkDecimal();
     } else {
       input.innerText += number;
     }
@@ -43,9 +43,9 @@ class Calculator {
   operate(toBeCalculated) {
     // Operations of the numbers goes here...
     let { num1, operator, num2 } = this.returnNumbers(toBeCalculated);
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
-
+    this.checkDecimal(num1);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     let result = null;
     switch (operator) {
       case "+":
@@ -61,11 +61,14 @@ class Calculator {
         result = num1 / num2;
         break;
       default:
-        alert("something went wrong!");
+        alert("Invalid Input");
     }
     if (isNaN(num1) || isNaN(num2)) {
       alert("Error");
-      this.reset();
+      this.input.innerText = this.input.innerText.slice(
+        0,
+        this.input.innerText.length - 1
+      );
     } else {
       this.updateDisplay(result);
     }
@@ -74,7 +77,7 @@ class Calculator {
   returnNumbers(inputNumbers) {
     for (let i = 0; i < inputNumbers.length; i++) {
       for (let j = 0; j < this.operations.length; j++) {
-        if (inputNumbers[i] == this.operations[j]) {
+        if (inputNumbers[i] === this.operations[j]) {
           const num1 = inputNumbers.slice(0, i);
           const operator = inputNumbers[i];
           const num2 = inputNumbers.slice(i + 1, inputNumbers.length);
@@ -88,8 +91,16 @@ class Calculator {
     }
   }
 
+  checkDecimal() {
+    const { num1, operator, num2 } = this.returnNumbers(this.input.innerText);
+    if (num2.toString().includes(".")) {
+      return;
+    } else {
+      this.input.innerText += `.`;
+    }
+  }
+
   updateDisplay(result) {
-    //this.input.innerText = result;
     if (
       this.operations.includes(
         this.input.innerText[this.input.innerText.length - 1]
