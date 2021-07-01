@@ -37,13 +37,11 @@ class Calculator {
       0,
       this.input.innerText.length - 1
     );
-    this.operate(toBeCalculated, operations);
+    this.operate(toBeCalculated);
   }
 
   operate(toBeCalculated) {
-    // Operations of the numbers goes here...
     let { num1, operator, num2 } = this.returnNumbers(toBeCalculated);
-    this.checkDecimal(num1);
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
     let result = null;
@@ -75,12 +73,15 @@ class Calculator {
   }
 
   returnNumbers(inputNumbers) {
+    let num1 = inputNumbers;
+    let operator = "";
+    let num2 = 0;
     for (let i = 0; i < inputNumbers.length; i++) {
       for (let j = 0; j < this.operations.length; j++) {
         if (inputNumbers[i] === this.operations[j]) {
-          const num1 = inputNumbers.slice(0, i);
-          const operator = inputNumbers[i];
-          const num2 = inputNumbers.slice(i + 1, inputNumbers.length);
+          num1 = inputNumbers.slice(0, i);
+          operator = inputNumbers[i];
+          num2 = inputNumbers.slice(i + 1, inputNumbers.length);
           return {
             num1,
             operator,
@@ -92,11 +93,11 @@ class Calculator {
   }
 
   checkDecimal() {
-    const { num1, operator, num2 } = this.returnNumbers(this.input.innerText);
-    if (num2.toString().includes(".")) {
+    const returnedItem = this.returnNumbers(this.input.innerText);
+    if (returnedItem.num2.toString().includes(".")) {
       return;
     } else {
-      this.input.innerText += `.`;
+      this.input.innerText += ".";
     }
   }
 
