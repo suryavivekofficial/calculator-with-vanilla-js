@@ -10,6 +10,7 @@
   --numbers-key-shadow: hsl(28, 16%, 65%);
   --number-key-text: hsl(221, 14%, 31%);
   --remaining-text-color: hsl(0, 0%, 100%);
+  --equals-btn-text: hsl(0, 0%, 100%);
 }
 
 .theme-2 {
@@ -24,6 +25,7 @@
   --numbers-key-shadow: hsl(35, 11%, 61%);
   --number-key-text: hsl(60, 10%, 19%);
   --remaining-text-color: hsl(0, 0, 100%);
+  --equals-btn-text: hsl(0, 0%, 100%);
 }
 
 .theme-3 {
@@ -37,7 +39,8 @@
   --numbers-key-background: hsl(268, 47%, 21%);
   --numbers-key-shadow: hsl(290, 70%, 36%);
   --number-key-text: hsl(52, 100%, 62%);
-  --remaining-text-color: hsl(0, 0, 100%);
+  --remaining-text-color: hsl(52, 100%, 62%);
+  --equals-btn-text: hsl(198, 20%, 13%);
 }
 
 *,
@@ -162,7 +165,7 @@ body .container .keys .key {
   font-weight: 900;
   padding: 0.2rem;
   font-size: 2rem;
-  border-radius: 10px;
+  border-radius: 7px;
   height: 100%;
   min-width: 100%;
   display: -webkit-box;
@@ -176,16 +179,16 @@ body .container .keys .key {
           align-items: center;
   background-color: var(--numbers-key-background);
   color: var(--number-key-text);
-  -webkit-box-shadow: 0 5px 0 0 var(--numbers-key-shadow);
-          box-shadow: 0 5px 0 0 var(--numbers-key-shadow);
+  -webkit-box-shadow: 0 3px 0 0 var(--numbers-key-shadow);
+          box-shadow: 0 3px 0 0 var(--numbers-key-shadow);
 }
 
 body .container .keys .delete,
 body .container .keys .reset {
   color: white;
   background-color: var(--del-reset-key-background);
-  -webkit-box-shadow: 0 5px 0 0 var(--del-reset-key-shadow);
-          box-shadow: 0 5px 0 0 var(--del-reset-key-shadow);
+  -webkit-box-shadow: 0 3px 0 0 var(--del-reset-key-shadow);
+          box-shadow: 0 3px 0 0 var(--del-reset-key-shadow);
   font-size: 1.2rem;
 }
 
@@ -196,10 +199,10 @@ body .container .keys .reset {
 }
 
 body .container .keys .equal-to {
-  color: white;
+  color: var(--equals-btn-text);
   background-color: var(--equals-key-background);
-  -webkit-box-shadow: 0 5px 0 0 var(--equals-key-shadow);
-          box-shadow: 0 5px 0 0 var(--equals-key-shadow);
+  -webkit-box-shadow: 0 3px 0 0 var(--equals-key-shadow);
+          box-shadow: 0 3px 0 0 var(--equals-key-shadow);
   -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-column: 3/5;
