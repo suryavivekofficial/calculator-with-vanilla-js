@@ -109,9 +109,8 @@ body .container header .theme-toggle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -142,9 +141,27 @@ body .container header .theme-toggle .theme-bg {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
   cursor: pointer;
+  position: relative;
+}
+
+body .container header .theme-toggle .theme-bg .theme-numbers {
+  position: absolute;
+  bottom: 20px;
+  right: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px;
+}
+
+body .container header .theme-toggle .theme-bg .theme-numbers p {
+  font-size: 0.2rem;
+  color: var(--remaining-text-color);
 }
 
 body .container header .theme-toggle .theme-bg input {
@@ -159,6 +176,8 @@ body .container header .theme-toggle .theme-bg input {
   border-radius: 50%;
   -webkit-transition: all 150ms linear;
   transition: all 150ms linear;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 body .container header .theme-toggle .theme-bg input:checked {

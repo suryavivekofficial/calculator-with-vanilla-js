@@ -40,7 +40,7 @@ body {
 
       .theme-toggle {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         width: 30%;
 
@@ -61,8 +61,23 @@ body {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          transform: scale(1.2);
           cursor: pointer;
+          position: relative;
+
+          .theme-numbers {
+            position: absolute;
+            bottom: 20px;
+            right: 1px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 5px;
+
+            p {
+              font-size: 0.2rem;
+              color: var(--remaining-text-color);
+            }
+          }
 
           input {
             width: 10px;
@@ -73,6 +88,7 @@ body {
             cursor: pointer;
             border-radius: 50%;
             transition: all 150ms linear;
+            transform: scale(1.2);
 
             &:checked {
               background: var(--equals-key-background);
