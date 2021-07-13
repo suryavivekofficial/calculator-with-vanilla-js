@@ -1,0 +1,50 @@
+@media screen and (max-width: 1024px) {
+  body {
+    .container {
+      width: 40%;
+      height: 80%;
+
+      header {
+        .theme-toggle {
+          width: 35%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  body {
+    .container {
+      width: 55%;
+      height: 78%;
+      header {
+        .theme-toggle {
+          width: 40%;
+        }
+      }
+      .input-field {
+        height: 12vh;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    .container {
+      width: 80%;
+      height: 75%;
+      header {
+        .theme-toggle {
+          width: 45%;
+        }
+      }
+      .input-field {
+        height: 15vh;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
