@@ -105,18 +105,70 @@ body .container header .title {
   color: var(--remaining-text-color);
 }
 
+body .container header .theme-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30%;
+}
+
 body .container header .theme-toggle label {
   margin: 1em;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   font-weight: 700;
   color: var(--remaining-text-color);
 }
 
 body .container header .theme-toggle .theme-bg {
-  background-color: var(--keypad-background);
-  display: inline;
-  padding: 0rem 0.2rem;
+  background: var(--keypad-background);
+  padding: 5px;
+  height: 15px;
   border-radius: 10px;
+  display: inline-block;
+  width: 35%;
+  height: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  cursor: pointer;
+}
+
+body .container header .theme-toggle .theme-bg input {
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+
+body .container header .theme-toggle .theme-bg input:checked {
+  background: var(--equals-key-background);
+}
+
+body .container header .theme-toggle .theme-bg input:before {
+  content: "";
+  display: inline-block;
+  width: 100%;
 }
 
 body .container .input-field {

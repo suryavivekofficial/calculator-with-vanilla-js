@@ -39,17 +39,51 @@ body {
       }
 
       .theme-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30%;
+
         label {
           margin: 1em;
-          font-size: 0.8rem;
+          font-size: 0.5rem;
           font-weight: 700;
           color: var(--remaining-text-color);
         }
         .theme-bg {
-          background-color: var(--keypad-background);
-          display: inline;
-          padding: 0rem 0.2rem;
+          background: var(--keypad-background);
+          padding: 5px;
+          height: 15px;
           border-radius: 10px;
+          display: inline-block;
+          width: 35%;
+          height: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transform: scale(1.2);
+          cursor: pointer;
+
+          input {
+            width: 10px;
+            height: 10px;
+            padding: 5px;
+            appearance: none;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 150ms linear;
+
+            &:checked {
+              background: var(--equals-key-background);
+            }
+
+            &:before {
+              content: "";
+              display: inline-block;
+              width: 100%;
+            }
+          }
         }
       }
     }
