@@ -6,7 +6,7 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshot](#screenshots)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -30,9 +30,9 @@ Users should be able to:
 
 ### Screenshots
 
-![Screenshots of my project with different themes](./images/Screenshot-theme-1.png)
-![Screenshots of my project](./images/Screenshot-theme-2.png)
-![Screenshots of my project](./images/Screenshot-theme-3.png)
+![](./images/Screenshot-theme-1.png)
+![](./images/Screenshot-theme-2.png)
+![](./images/Screenshot-theme-3.png)
 
 ### Links
 
